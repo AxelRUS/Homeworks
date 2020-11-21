@@ -84,18 +84,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvGenre"
+            app:layout_constraintTop_toTopOf="@id/ivStarFive"
             app:srcCompat="@drawable/ic_progress_foreground" />
         <ImageView
             android:id="@+id/ivStarTwo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:layout_marginTop="8dp"
             app:layout_constraintStart_toEndOf="@id/ivStarOne"
-            app:layout_constraintTop_toBottomOf="@id/tvGenre"
+            app:layout_constraintTop_toTopOf="@id/ivStarFive"
             app:srcCompat="@drawable/ic_progress_foreground" />
 
         <ImageView
@@ -103,9 +101,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:layout_marginTop="8dp"
             app:layout_constraintStart_toEndOf="@id/ivStarTwo"
-            app:layout_constraintTop_toBottomOf="@id/tvGenre"
+            app:layout_constraintTop_toTopOf="@id/ivStarFive"
             app:srcCompat="@drawable/ic_progress_foreground" />
 
         <ImageView
@@ -113,9 +110,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:layout_marginTop="8dp"
             app:layout_constraintStart_toEndOf="@id/ivStarThree"
-            app:layout_constraintTop_toBottomOf="@id/tvGenre"
+            app:layout_constraintTop_toTopOf="@id/ivStarFive"
             app:srcCompat="@drawable/ic_progress_foreground" />
 
         <ImageView
@@ -123,17 +119,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:layout_marginTop="8dp"
             app:layout_constraintStart_toEndOf="@id/ivStarFour"
-            app:layout_constraintTop_toBottomOf="@id/tvGenre"
-            app:srcCompat="@drawable/ic_progress_background" />
+            app:srcCompat="@drawable/ic_progress_background"
+            app:layout_constraintTop_toTopOf="@id/tvReviewsCount"
+            app:layout_constraintBottom_toBottomOf="@id/tvReviewsCount"/>
 
         <TextView
+            android:id="@+id/tvReviewsCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="125 REWIEWS"
             android:textFontWeight="900"
-            android:textColor="6d6d80"
+            android:textColor="#6d6d80"
             android:textSize="14sp"
             android:layout_marginStart="4dp"
             android:layout_marginTop="8dp"

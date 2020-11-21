@@ -10,6 +10,28 @@
 
     <color name="background">#191926</color>
 
+    <color name="white70">#B2FFFFFF</color>
+    <color name="colorDarkBlue">#191926</color>
+    <color name="colorGray">#6D6D80</color>
+    <color name="colorLightOnDarkText">#ECECEC</color>
+    <color name="colorPink">#FF3466</color>
+
+    <!-- Movie Details screen -->
+    <color name="colorMovieDetailsBackground">@color/colorDarkBlue</color>
+    <color name="colorMovieDetailsBackText">@color/colorGray</color>
+    <color name="colorMovieDetailsAllowedAgeBackground">@color/colorDarkBlue</color>
+    <color name="colorMovieDetailsAllowedAgeText">@color/colorLightOnDarkText</color>
+    <color name="colorMovieDetailsFilmName">@color/colorLightOnDarkText</color>
+    <color name="colorMovieDetailsFilmGenre">@color/colorPink</color>
+    <color name="colorMovieDetailsFilmRating">@color/colorGray</color>
+    <color name="colorMovieDetailsReviewsCounter">@color/colorGray</color>
+    <color name="colorMovieDetailsStorylineTitle">@color/colorLightOnDarkText</color>
+    <color name="colorMovieDetailsStorylineText">@color/white70</color>
+    <color name="colorMovieDetailsCastTitle">@color/colorLightOnDarkText</color>
+    <color name="colorMovieDetailsActorName">@color/white70</color>
+    <!-- Movie Details screen -->
+
+
     <style name="ThemeActionBar" parent="Widget.AppCompat.ActionBar">
         <item name="elevation" tools:targetApi="lollipop">0dp</item>
         <item name="background">@android:color/transparent</item>
