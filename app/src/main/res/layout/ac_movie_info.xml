@@ -8,9 +8,11 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:background="@color/background"
-        tools:context=".MainActivity">
+        tools:context=".MainActivity"
+        android:paddingBottom="@dimen/navigation_bar_height"
+        >
 
 
         <ImageView
@@ -87,6 +89,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/ivStarFive"
             app:srcCompat="@drawable/ic_progress_foreground" />
+
         <ImageView
             android:id="@+id/ivStarTwo"
             android:layout_width="wrap_content"
@@ -119,24 +122,179 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
+            app:layout_constraintBottom_toBottomOf="@id/tvReviewsCount"
             app:layout_constraintStart_toEndOf="@id/ivStarFour"
-            app:srcCompat="@drawable/ic_progress_background"
             app:layout_constraintTop_toTopOf="@id/tvReviewsCount"
-            app:layout_constraintBottom_toBottomOf="@id/tvReviewsCount"/>
+            app:srcCompat="@drawable/ic_progress_background" />
 
         <TextView
             android:id="@+id/tvReviewsCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="125 REWIEWS"
-            android:textFontWeight="900"
-            android:textColor="#6d6d80"
-            android:textSize="14sp"
             android:layout_marginStart="4dp"
             android:layout_marginTop="8dp"
+            android:text="125 REWIEWS"
+            android:textColor="#6d6d80"
+            android:textFontWeight="900"
+            android:textSize="14sp"
             app:layout_constraintStart_toEndOf="@id/ivStarFive"
-            app:layout_constraintTop_toBottomOf="@id/tvGenre"
+            app:layout_constraintTop_toBottomOf="@id/tvGenre" />
 
+        <TextView
+            android:id="@+id/tvStorylineLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:text="Storyline"
+            android:textColor="#ececec"
+            android:textFontWeight="900"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvReviewsCount" />
+
+        <TextView
+            android:id="@+id/tvStoryline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
+            android:text="After the devastating events of Avengers: Infinity War, the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos' actions and restore balance to the universe."
+            android:textColor="@color/white"
+            android:textFontWeight="300"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvStorylineLabel" />
+
+        <TextView
+            android:id="@+id/tvCastLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:text="Cast"
+            android:textColor="@color/white"
+            android:textFontWeight="900"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvStoryline" />
+
+        <ImageView
+            android:id="@+id/ivRobertDowneyJr"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="@+id/ivChrisEvans"
+            app:layout_constraintHorizontal_bias="0.5"
+            android:layout_marginTop="7dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="4dp"
+            app:layout_constraintWidth_percent="0.20"
+            android:adjustViewBounds="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvCastLabel"
+            app:srcCompat="@drawable/robert_downey_jr"
+            tools:layout_editor_absoluteY="558dp" />
+
+        <ImageView
+            android:id="@+id/ivChrisEvans"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="@+id/ivMarkRuffalo"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_goneMarginEnd="4dp"
+            android:layout_marginEnd="4dp"
+            app:layout_constraintWidth_percent="0.20"
+            android:adjustViewBounds="true"
+            android:layout_marginTop="7dp"
+            app:layout_constraintStart_toEndOf="@+id/ivRobertDowneyJr"
+            app:layout_constraintTop_toBottomOf="@id/tvCastLabel"
+            app:srcCompat="@drawable/chris_evans"
+            tools:layout_editor_absoluteY="585dp" />
+
+        <ImageView
+            android:id="@+id/ivMarkRuffalo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="@+id/ivChrisHemsworth"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_goneMarginEnd="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginTop="7dp"
+            app:layout_constraintWidth_percent="0.20"
+            android:adjustViewBounds="true"
+            app:layout_constraintStart_toEndOf="@+id/ivChrisEvans"
+            app:layout_constraintTop_toBottomOf="@id/tvCastLabel"
+            app:srcCompat="@drawable/mark_ruffalo"
+            tools:layout_editor_absoluteY="569dp" />
+
+        <ImageView
+            android:id="@+id/ivChrisHemsworth"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_goneMarginEnd="4dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="7dp"
+            app:layout_constraintWidth_percent="0.20"
+            android:adjustViewBounds="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/ivMarkRuffalo"
+            app:layout_constraintTop_toBottomOf="@id/tvCastLabel"
+            app:srcCompat="@drawable/chris_hemsworth"
+            tools:layout_editor_absoluteY="572dp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Robert\nDowney Jr."
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:textFontWeight="900"
+            android:layout_marginTop="6dp"
+            app:layout_constraintTop_toBottomOf="@id/ivRobertDowneyJr"
+            app:layout_constraintStart_toStartOf="@id/ivRobertDowneyJr"
+            app:layout_constraintEnd_toEndOf="@id/ivRobertDowneyJr"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Chris\nEvans"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:textFontWeight="900"
+            android:layout_marginTop="6dp"
+            app:layout_constraintStart_toStartOf="@id/ivChrisEvans"
+            app:layout_constraintTop_toBottomOf="@id/ivChrisEvans"
+            app:layout_constraintEnd_toEndOf="@id/ivChrisEvans"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Mark\nRuffalo"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:textFontWeight="900"
+            android:layout_marginTop="6dp"
+            app:layout_constraintStart_toStartOf="@id/ivMarkRuffalo"
+            app:layout_constraintEnd_toEndOf="@id/ivMarkRuffalo"
+            app:layout_constraintTop_toBottomOf="@id/ivMarkRuffalo"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Chris\nHemsworth"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:textFontWeight="900"
+            android:layout_marginTop="6dp"
+            app:layout_constraintStart_toStartOf="@id/ivChrisHemsworth"
+            app:layout_constraintEnd_toEndOf="@id/ivChrisHemsworth"
+            app:layout_constraintTop_toBottomOf="@id/ivChrisHemsworth"
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

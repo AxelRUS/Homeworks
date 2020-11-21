@@ -7,4 +7,5 @@
     <dimen name="movie_details_actor_avatar_space">80dp</dimen>
     <!-- Movie Details screen -->
 
+    <dimen name="navigation_bar_height">64dp</dimen>
 </resources>
