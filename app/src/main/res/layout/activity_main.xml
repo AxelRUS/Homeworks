@@ -31,7 +31,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/clMovie"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/background">
 
@@ -40,7 +40,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:adjustViewBounds="true"
-                android:scaleType="fitEnd"
+                android:scaleType="fitXY"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@id/brCardBottom"
@@ -52,7 +52,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
-                android:scaleType="fitEnd"
+                android:scaleType="fitStart"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -62,8 +62,8 @@
                 android:id="@+id/ivMovieMask"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:scaleType="fitStart"
                 android:adjustViewBounds="true"
+                android:scaleType="fitStart"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -110,8 +110,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:barrierDirection="end"
-                app:constraint_referenced_ids="space"
-                />
+                app:constraint_referenced_ids="space" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
