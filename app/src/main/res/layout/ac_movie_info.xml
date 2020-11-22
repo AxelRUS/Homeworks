@@ -14,7 +14,6 @@
         android:paddingBottom="@dimen/navigation_bar_height"
         >
 
-
         <ImageView
             android:id="@+id/ivBgImage"
             android:layout_width="match_parent"
@@ -42,10 +41,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:text="Avengers:\nEnd Game"
+            android:text="@string/movie_name"
             android:textColor="@color/white"
             android:textFontWeight="900"
-            android:textSize="40sp"
+            android:textSize="@dimen/movie_details_film_name_size"
             app:layout_constraintBottom_toBottomOf="@id/ivBgImage"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -59,10 +58,10 @@
             android:layout_marginBottom="8dp"
             android:background="#191926"
             android:padding="4dp"
-            android:text="13+"
+            android:text="@string/movie_pg_rating"
             android:textColor="@color/white"
             android:textFontWeight="900"
-            android:textSize="12sp"
+            android:textSize="@dimen/movie_details_allowed_age_size"
             app:layout_constraintBottom_toTopOf="@id/tvMovieName"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -73,10 +72,10 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="16dp"
-            android:text="Action, Adventure, Fantasy"
+            android:text="@string/movie_genres"
             android:textColor="#ff3466"
             android:textFontWeight="300"
-            android:textSize="14sp"
+            android:textSize="@dimen/movie_details_film_genre_size"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvMovieName" />
@@ -133,10 +132,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:layout_marginTop="8dp"
-            android:text="125 REWIEWS"
+            android:text="@string/movie_review_count"
             android:textColor="#6d6d80"
             android:textFontWeight="900"
-            android:textSize="14sp"
+            android:textSize="@dimen/movie_details_reviews_size"
             app:layout_constraintStart_toEndOf="@id/ivStarFive"
             app:layout_constraintTop_toBottomOf="@id/tvGenre" />
 
@@ -146,10 +145,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
-            android:text="Storyline"
+            android:text="@string/label_storyline"
             android:textColor="#ececec"
             android:textFontWeight="900"
-            android:textSize="14sp"
+            android:textSize="@dimen/movie_details_storyline_title_size"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvReviewsCount" />
 
@@ -160,10 +159,10 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="16dp"
-            android:text="After the devastating events of Avengers: Infinity War, the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos' actions and restore balance to the universe."
+            android:text="@string/storyline"
             android:textColor="@color/white"
             android:textFontWeight="300"
-            android:textSize="14sp"
+            android:textSize="@dimen/movie_details_storyline_text_size"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvStorylineLabel" />
@@ -174,10 +173,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
-            android:text="Cast"
+            android:text="@string/label_cast"
             android:textColor="@color/white"
             android:textFontWeight="900"
-            android:textSize="14sp"
+            android:textSize="@dimen/movie_details_cast_title_size"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvStoryline" />
 
@@ -248,9 +247,9 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Robert\nDowney Jr."
+            android:text="@string/actor_robert_ndowney_jr"
             android:textColor="@color/white"
-            android:textSize="12sp"
+            android:textSize="@dimen/movie_details_actor_name_size"
             android:textFontWeight="900"
             android:layout_marginTop="6dp"
             app:layout_constraintTop_toBottomOf="@id/ivRobertDowneyJr"
@@ -261,9 +260,9 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Chris\nEvans"
+            android:text="@string/actor_chris_nevans"
             android:textColor="@color/white"
-            android:textSize="12sp"
+            android:textSize="@dimen/movie_details_actor_name_size"
             android:textFontWeight="900"
             android:layout_marginTop="6dp"
             app:layout_constraintStart_toStartOf="@id/ivChrisEvans"
@@ -274,9 +273,9 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Mark\nRuffalo"
+            android:text="@string/actor_mark_nruffalo"
             android:textColor="@color/white"
-            android:textSize="12sp"
+            android:textSize="@dimen/movie_details_actor_name_size"
             android:textFontWeight="900"
             android:layout_marginTop="6dp"
             app:layout_constraintStart_toStartOf="@id/ivMarkRuffalo"
@@ -287,9 +286,9 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Chris\nHemsworth"
+            android:text="@string/actor_chris_hemsworth"
             android:textColor="@color/white"
-            android:textSize="12sp"
+            android:textSize="@dimen/movie_details_actor_name_size"
             android:textFontWeight="900"
             android:layout_marginTop="6dp"
             app:layout_constraintStart_toStartOf="@id/ivChrisHemsworth"
