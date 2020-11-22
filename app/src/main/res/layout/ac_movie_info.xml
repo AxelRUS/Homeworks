@@ -10,9 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorMovieDetailsBackground"
-        tools:context=".MainActivity"
-        android:paddingBottom="@dimen/navigation_bar_height"
-        >
+        tools:context=".MainActivity">
 
         <ImageView
             android:id="@+id/ivBgImage"
@@ -56,11 +54,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginBottom="8dp"
-            android:background="@color/colorMovieDetailsAllowedAgeBackground"
+            android:background="@drawable/bg_age"
             android:padding="4dp"
             android:text="@string/movie_pg_rating"
             android:textColor="@color/colorMovieDetailsAllowedAgeText"
-            android:textFontWeight="900"
+            style="@style/Text900"
             android:textSize="@dimen/movie_details_allowed_age_size"
             app:layout_constraintBottom_toTopOf="@id/tvMovieName"
             app:layout_constraintStart_toStartOf="parent" />
@@ -74,7 +72,7 @@
             android:layout_marginEnd="16dp"
             android:text="@string/movie_genres"
             android:textColor="@color/colorMovieDetailsFilmGenre"
-            android:textFontWeight="300"
+            style="@style/Text300"
             android:textSize="@dimen/movie_details_film_genre_size"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -134,7 +132,7 @@
             android:layout_marginTop="8dp"
             android:text="@string/movie_review_count"
             android:textColor="@color/colorMovieDetailsBackText"
-            android:textFontWeight="900"
+            style="@style/Text900"
             android:textSize="@dimen/movie_details_reviews_size"
             app:layout_constraintStart_toEndOf="@id/ivStarFive"
             app:layout_constraintTop_toBottomOf="@id/tvGenre" />
@@ -147,7 +145,7 @@
             android:layout_marginTop="24dp"
             android:text="@string/label_storyline"
             android:textColor="@color/colorMovieDetailsStorylineTitle"
-            android:textFontWeight="900"
+            style="@style/Text900"
             android:textSize="@dimen/movie_details_storyline_title_size"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvReviewsCount" />
@@ -161,7 +159,7 @@
             android:layout_marginEnd="16dp"
             android:text="@string/storyline"
             android:textColor="@color/colorMovieDetailsStorylineText"
-            android:textFontWeight="300"
+            style="@style/Text300"
             android:textSize="@dimen/movie_details_storyline_text_size"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -175,126 +173,119 @@
             android:layout_marginTop="24dp"
             android:text="@string/label_cast"
             android:textColor="@color/colorMovieDetailsCastTitle"
-            android:textFontWeight="900"
+            style="@style/Text900"
             android:textSize="@dimen/movie_details_cast_title_size"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvStoryline" />
 
         <ImageView
             android:id="@+id/ivRobertDowneyJr"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/movie_details_actor_avatar_space"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginEnd="4dp"
+            android:adjustViewBounds="true"
             app:layout_constraintEnd_toStartOf="@+id/ivChrisEvans"
             app:layout_constraintHorizontal_bias="0.5"
-            android:layout_marginTop="7dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="4dp"
-            app:layout_constraintWidth_percent="0.20"
-            android:adjustViewBounds="true"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvCastLabel"
-            app:srcCompat="@drawable/robert_downey_jr"
-            tools:layout_editor_absoluteY="558dp" />
+            app:srcCompat="@drawable/robert_downey_jr" />
 
         <ImageView
             android:id="@+id/ivChrisEvans"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/movie_details_actor_avatar_space"
             android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:layout_marginEnd="4dp"
+            android:adjustViewBounds="true"
             app:layout_constraintEnd_toStartOf="@+id/ivMarkRuffalo"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_goneMarginEnd="4dp"
-            android:layout_marginEnd="4dp"
-            app:layout_constraintWidth_percent="0.20"
-            android:adjustViewBounds="true"
-            android:layout_marginTop="7dp"
             app:layout_constraintStart_toEndOf="@+id/ivRobertDowneyJr"
             app:layout_constraintTop_toBottomOf="@id/tvCastLabel"
+            app:layout_goneMarginEnd="4dp"
             app:srcCompat="@drawable/chris_evans"
             tools:layout_editor_absoluteY="585dp" />
 
         <ImageView
             android:id="@+id/ivMarkRuffalo"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/movie_details_actor_avatar_space"
             android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:layout_marginEnd="4dp"
+            android:adjustViewBounds="true"
             app:layout_constraintEnd_toStartOf="@+id/ivChrisHemsworth"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_goneMarginEnd="4dp"
-            android:layout_marginEnd="4dp"
-            android:layout_marginTop="7dp"
-            app:layout_constraintWidth_percent="0.20"
-            android:adjustViewBounds="true"
             app:layout_constraintStart_toEndOf="@+id/ivChrisEvans"
             app:layout_constraintTop_toBottomOf="@id/tvCastLabel"
+            app:layout_goneMarginEnd="4dp"
             app:srcCompat="@drawable/mark_ruffalo"
             tools:layout_editor_absoluteY="569dp" />
 
         <ImageView
             android:id="@+id/ivChrisHemsworth"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/movie_details_actor_avatar_space"
             android:layout_height="wrap_content"
-            app:layout_goneMarginEnd="4dp"
-            android:layout_marginEnd="16dp"
             android:layout_marginTop="7dp"
-            app:layout_constraintWidth_percent="0.20"
+            android:layout_marginEnd="16dp"
             android:adjustViewBounds="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/ivMarkRuffalo"
             app:layout_constraintTop_toBottomOf="@id/tvCastLabel"
+            app:layout_goneMarginEnd="4dp"
             app:srcCompat="@drawable/chris_hemsworth"
             tools:layout_editor_absoluteY="572dp" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:paddingBottom="16dp"
             android:text="@string/actor_robert_ndowney_jr"
             android:textColor="@color/colorMovieDetailsActorName"
+            style="@style/Text900"
             android:textSize="@dimen/movie_details_actor_name_size"
-            android:textFontWeight="900"
-            android:layout_marginTop="6dp"
-            app:layout_constraintTop_toBottomOf="@id/ivRobertDowneyJr"
-            app:layout_constraintStart_toStartOf="@id/ivRobertDowneyJr"
             app:layout_constraintEnd_toEndOf="@id/ivRobertDowneyJr"
-            />
+            app:layout_constraintStart_toStartOf="@id/ivRobertDowneyJr"
+            app:layout_constraintTop_toBottomOf="@id/ivRobertDowneyJr" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
             android:text="@string/actor_chris_nevans"
             android:textColor="@color/colorMovieDetailsActorName"
+            style="@style/Text900"
             android:textSize="@dimen/movie_details_actor_name_size"
-            android:textFontWeight="900"
-            android:layout_marginTop="6dp"
-            app:layout_constraintStart_toStartOf="@id/ivChrisEvans"
-            app:layout_constraintTop_toBottomOf="@id/ivChrisEvans"
             app:layout_constraintEnd_toEndOf="@id/ivChrisEvans"
-            />
+            app:layout_constraintStart_toStartOf="@id/ivChrisEvans"
+            app:layout_constraintTop_toBottomOf="@id/ivChrisEvans" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
             android:text="@string/actor_mark_nruffalo"
             android:textColor="@color/colorMovieDetailsActorName"
+            style="@style/Text900"
             android:textSize="@dimen/movie_details_actor_name_size"
-            android:textFontWeight="900"
-            android:layout_marginTop="6dp"
-            app:layout_constraintStart_toStartOf="@id/ivMarkRuffalo"
             app:layout_constraintEnd_toEndOf="@id/ivMarkRuffalo"
-            app:layout_constraintTop_toBottomOf="@id/ivMarkRuffalo"
-            />
+            app:layout_constraintStart_toStartOf="@id/ivMarkRuffalo"
+            app:layout_constraintTop_toBottomOf="@id/ivMarkRuffalo" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
             android:text="@string/actor_chris_hemsworth"
             android:textColor="@color/colorMovieDetailsActorName"
+            style="@style/Text900"
             android:textSize="@dimen/movie_details_actor_name_size"
-            android:textFontWeight="900"
-            android:layout_marginTop="6dp"
-            app:layout_constraintStart_toStartOf="@id/ivChrisHemsworth"
             app:layout_constraintEnd_toEndOf="@id/ivChrisHemsworth"
-            app:layout_constraintTop_toBottomOf="@id/ivChrisHemsworth"
-            />
+            app:layout_constraintStart_toStartOf="@id/ivChrisHemsworth"
+            app:layout_constraintTop_toBottomOf="@id/ivChrisHemsworth" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

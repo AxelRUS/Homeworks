@@ -18,12 +18,21 @@
         <item name="actionBarStyle">@style/ThemeActionBar</item>
         <item name="windowActionBarOverlay">true</item>
         <item name="android:windowTranslucentStatus">true</item>
-        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:windowTranslucentNavigation">false</item>
     </style>
 
     <style name="ThemeActionBar" parent="Widget.AppCompat.ActionBar">
         <item name="elevation" tools:targetApi="lollipop">0dp</item>
         <item name="background">@android:color/transparent</item>
         <item name="logo">@drawable/ic_actionbar_logo</item>
+    </style>
+
+    <style name="Text900">
+        <item name="android:textFontWeight" tools:targetApi="p">900</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Text300">
+        <item name="android:textFontWeight" tools:targetApi="p">300</item>
     </style>
 </resources>
