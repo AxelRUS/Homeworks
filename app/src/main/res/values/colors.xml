@@ -31,10 +31,4 @@
     <color name="colorMovieDetailsActorName">@color/white70</color>
     <!-- Movie Details screen -->
 
-
-    <style name="ThemeActionBar" parent="Widget.AppCompat.ActionBar">
-        <item name="elevation" tools:targetApi="lollipop">0dp</item>
-        <item name="background">@android:color/transparent</item>
-        <item name="logo">@drawable/ic_actionbar_logo</item>
-    </style>
 </resources>

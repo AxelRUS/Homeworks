@@ -20,4 +20,10 @@
         <item name="android:windowTranslucentStatus">true</item>
         <item name="android:windowTranslucentNavigation">true</item>
     </style>
+
+    <style name="ThemeActionBar" parent="Widget.AppCompat.ActionBar">
+        <item name="elevation" tools:targetApi="lollipop">0dp</item>
+        <item name="background">@android:color/transparent</item>
+        <item name="logo">@drawable/ic_actionbar_logo</item>
+    </style>
 </resources>
