@@ -11,7 +11,6 @@ import androidx.fragment.app.Fragment
 
 class MovieListFragment : Fragment() {
 
-    var cardView: CardView? = null
     var onCardClick: OnCardClick? = null
 
     override fun onAttach(context: Context) {
@@ -21,10 +20,12 @@ class MovieListFragment : Fragment() {
         }
 
         if (context is AppCompatActivity) {
-            context.supportActionBar?.title = getString(R.string.movies_list)
-            context.supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_actionbar_list)
-            context.supportActionBar?.setHomeButtonEnabled(true)
-            context.supportActionBar?.setDisplayHomeAsUpEnabled(true)
+            context.supportActionBar?.apply {
+                title = getString(R.string.movies_list)
+                setHomeAsUpIndicator(R.drawable.ic_actionbar_list)
+                setHomeButtonEnabled(true)
+                setDisplayHomeAsUpEnabled(true)
+            }
         }
     }
 
@@ -33,7 +34,7 @@ class MovieListFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        cardView = view.findViewById(R.id.cvMovie)
+        val cardView = view.findViewById(R.id.cvMovie) as CardView?
         cardView?.setOnClickListener { onCardClick?.onClick() }
     }
 

@@ -26,11 +26,12 @@ class MovieDetailsFragment : Fragment() {
         }
 
         if (context is AppCompatActivity) {
-            context.supportActionBar?.title = getString(R.string.movie_details)
-//            context.supportActionBar?.setIcon(R.drawable.ic_actionbar_back)
-            context.supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_chevron_left)
-            context.supportActionBar?.setHomeButtonEnabled(true)
-            context.supportActionBar?.setDisplayHomeAsUpEnabled(true)
+            context.supportActionBar?.apply {
+                title = getString(R.string.movie_details)
+                setHomeAsUpIndicator(R.drawable.ic_chevron_left)
+                setHomeButtonEnabled(true)
+                setDisplayHomeAsUpEnabled(true)
+            }
         }
     }
 
