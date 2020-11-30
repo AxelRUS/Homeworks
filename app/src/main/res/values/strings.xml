@@ -11,4 +11,6 @@
     <string name="actor_mark_nruffalo">Mark\nRuffalo</string>
     <string name="actor_chris_hemsworth">Chris\nHemsworth</string>
     <string name="label_storyline">Storyline</string>
+    <string name="movie_details">Movie Details</string>
+    <string name="movies_list">Movies List</string>
 </resources>
