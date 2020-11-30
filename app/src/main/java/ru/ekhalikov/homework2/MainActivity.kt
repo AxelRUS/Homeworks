@@ -19,10 +19,7 @@ class MainActivity : AppCompatActivity(), MovieListFragment.OnCardClick {
                     .replace(R.id.container, MovieListFragment.newInstance())
                     .commit()
         }
-
-//        supportActionBar?.title = "Back"
-//        supportActionBar?.setDisplayShowHomeEnabled(true)
-//        supportActionBar?.setIcon(R.drawable.ic_actionbar_logo)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
     }
 
     override fun onClick() {

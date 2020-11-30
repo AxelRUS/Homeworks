@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 
@@ -17,6 +18,11 @@ class MovieListFragment : Fragment() {
         super.onAttach(context)
         if (context is OnCardClick) {
             onCardClick = context
+        }
+
+        if (context is AppCompatActivity) {
+            context.supportActionBar?.title = "Movies List"
+            context.supportActionBar?.setIcon(R.drawable.ic_actionbar_list)
         }
     }
 
