@@ -22,7 +22,9 @@ class MovieListFragment : Fragment() {
 
         if (context is AppCompatActivity) {
             context.supportActionBar?.title = "Movies List"
-            context.supportActionBar?.setIcon(R.drawable.ic_actionbar_list)
+            context.supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_actionbar_list)
+            context.supportActionBar?.setHomeButtonEnabled(true)
+            context.supportActionBar?.setDisplayHomeAsUpEnabled(true)
         }
     }
 

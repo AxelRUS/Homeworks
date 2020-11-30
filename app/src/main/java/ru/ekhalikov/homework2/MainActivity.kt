@@ -4,7 +4,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentContainerView
 
-class MainActivity : AppCompatActivity(), MovieListFragment.OnCardClick {
+class MainActivity : AppCompatActivity(), MovieListFragment.OnCardClick,
+    MovieDetailsFragment.BackButtonListener {
 
     var container: FragmentContainerView? = null
 
@@ -14,18 +15,27 @@ class MainActivity : AppCompatActivity(), MovieListFragment.OnCardClick {
 
         container = findViewById(R.id.container)
 
+
+//        supportActionBar?.setDisplayShowHomeEnabled(true)
+
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                    .replace(R.id.container, MovieListFragment.newInstance())
-                    .commit()
+                .replace(R.id.container, MovieListFragment.newInstance())
+                .commit()
         }
-        supportActionBar?.setDisplayShowHomeEnabled(true)
     }
 
     override fun onClick() {
         supportFragmentManager.beginTransaction()
-                .addToBackStack(null)
-                .replace(R.id.container, MovieDetailsFragment.newInstance())
-                .commit()
+//                .addToBackStack(null)
+            .replace(R.id.container, MovieDetailsFragment.newInstance())
+            .commit()
+    }
+
+    override fun onBackButtonPressed() {
+        supportFragmentManager.beginTransaction()
+//            .addToBackStack(null)
+            .replace(R.id.container, MovieListFragment.newInstance())
+            .commit()
     }
 }

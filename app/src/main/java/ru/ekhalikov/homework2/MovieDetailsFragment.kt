@@ -11,17 +11,26 @@ import androidx.fragment.app.Fragment
 
 class MovieDetailsFragment : Fragment() {
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    var backButtonListener: BackButtonListener? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
     }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
 
+        if (context is BackButtonListener) {
+            backButtonListener = context
+        }
+
         if (context is AppCompatActivity) {
             context.supportActionBar?.title = "Back"
-            context.supportActionBar?.setIcon(R.drawable.ic_actionbar_back)
+//            context.supportActionBar?.setIcon(R.drawable.ic_actionbar_back)
+            context.supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_chevron_left)
+            context.supportActionBar?.setHomeButtonEnabled(true)
+            context.supportActionBar?.setDisplayHomeAsUpEnabled(true)
         }
     }
 
@@ -36,14 +45,25 @@ class MovieDetailsFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> {
-                activity?.onBackPressed()
+                backButtonListener?.onBackButtonPressed()
                 return true
             }
             else -> return super.onOptionsItemSelected(item)
         }
     }
 
+    override fun onDetach() {
+        super.onDetach()
+        backButtonListener = null
+    }
+
     companion object {
         fun newInstance() = MovieDetailsFragment()
     }
+
+    interface BackButtonListener {
+        fun onBackButtonPressed()
+    }
+
+
 }

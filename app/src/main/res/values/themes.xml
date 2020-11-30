@@ -24,7 +24,7 @@
     <style name="ThemeActionBar" parent="Widget.AppCompat.ActionBar">
         <item name="elevation" tools:targetApi="lollipop">0dp</item>
         <item name="background">@android:color/transparent</item>
-        <item name="logo">@drawable/ic_actionbar_back</item>
+<!--        <item name="android:homeAsUpIndicator">@drawable/ic_actionbar_back</item>-->
     </style>
 
     <style name="Text900">
