@@ -11,7 +11,7 @@ class MainActivity : AppCompatActivity(), MovieListFragment.OnCardClick,
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.ac_main)
+        setContentView(R.layout.activity_main)
 
         container = findViewById(R.id.container)
 

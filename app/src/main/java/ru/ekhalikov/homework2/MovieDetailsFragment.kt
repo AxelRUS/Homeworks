@@ -39,7 +39,7 @@ class MovieDetailsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fr_movie_details, container, false)
+        return inflater.inflate(R.layout.fragment_movie_details, container, false)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
