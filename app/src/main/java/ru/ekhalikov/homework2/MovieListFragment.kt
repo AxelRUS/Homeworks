@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 class MovieListFragment : Fragment() {
 
@@ -30,12 +32,16 @@ class MovieListFragment : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_movie_list, container, false)
+        return inflater.inflate(R.layout.fragment_movies_list, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val cardView = view.findViewById(R.id.cvMovie) as CardView?
-        cardView?.setOnClickListener { onCardClick?.onClick() }
+//        val cardView = view.findViewById(R.id.cvMovie) as CardView?
+//        cardView?.setOnClickListener { onCardClick?.onClick() }
+        val recycler = view.findViewById<RecyclerView>(R.id.recycler)
+        val gridLayoutManager = GridLayoutManager(activity, 2)
+        recycler.layoutManager = gridLayoutManager
+        recycler.adapter = MovieAdapter()
     }
 
     override fun onDetach() {
