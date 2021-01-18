@@ -41,7 +41,7 @@ class MovieListFragment : Fragment() {
         val recycler = view.findViewById<RecyclerView>(R.id.recycler)
         val gridLayoutManager = GridLayoutManager(activity, 2)
         recycler.layoutManager = gridLayoutManager
-        recycler.adapter = MovieAdapter()
+        recycler.adapter = MovieAdapter({onCardClick?.onClick()})
     }
 
     override fun onDetach() {
