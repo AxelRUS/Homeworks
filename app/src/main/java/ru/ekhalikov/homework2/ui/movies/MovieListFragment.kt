@@ -7,9 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.coroutines.launch
 import ru.ekhalikov.homework2.R
+import ru.ekhalikov.homework2.di.MovieRepositoryProvider
 
 class MovieListFragment : Fragment() {
 
@@ -39,14 +42,23 @@ class MovieListFragment : Fragment() {
 //        val cardView = view.findViewById(R.id.cvMovie) as CardView?
 //        cardView?.setOnClickListener { onCardClick?.onClick() }
         val recycler = view.findViewById<RecyclerView>(R.id.recycler)
-        val gridLayoutManager = GridLayoutManager(activity, 2)
-        recycler.layoutManager = gridLayoutManager
-        recycler.adapter = MovieAdapter({onCardClick?.onClick()})
+        recycler.layoutManager = GridLayoutManager(activity, 2)
+        val adapter = MovieAdapter({ onCardClick?.onClick() })
+        recycler.adapter = adapter
+        loadDataToAdapter(adapter)
     }
 
     override fun onDetach() {
         super.onDetach()
         onCardClick = null
+    }
+
+    fun loadDataToAdapter(adapter: MovieAdapter) {
+        val repository = (requireActivity() as MovieRepositoryProvider).provideMovieRepository()
+        lifecycleScope.launch {
+            val movies = repository.loadMovies()
+            adapter.setData(movies)
+        }
     }
 
     companion object {
