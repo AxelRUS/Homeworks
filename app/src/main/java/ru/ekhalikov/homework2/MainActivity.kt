@@ -2,9 +2,12 @@ package ru.ekhalikov.homework2
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import ru.ekhalikov.homework2.ui.moviedetails.MovieDetailsFragment
+import ru.ekhalikov.homework2.ui.movies.MovieListFragment
 
-class MainActivity : AppCompatActivity(), MovieListFragment.OnCardClick,
-    MovieDetailsFragment.BackButtonListener {
+class MainActivity : AppCompatActivity(),
+        MovieListFragment.OnCardClick,
+        MovieDetailsFragment.BackButtonListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -12,8 +15,8 @@ class MainActivity : AppCompatActivity(), MovieListFragment.OnCardClick,
 
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.container, MovieListFragment.newInstance())
-                .commit()
+                    .replace(R.id.container, MovieListFragment.newInstance())
+                    .commit()
         }
     }
 

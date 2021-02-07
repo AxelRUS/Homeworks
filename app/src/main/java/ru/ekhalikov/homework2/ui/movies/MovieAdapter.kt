@@ -1,9 +1,10 @@
-package ru.ekhalikov.homework2
+package ru.ekhalikov.homework2.ui.movies
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import ru.ekhalikov.homework2.R
 
 class MovieAdapter(var onClickListener: View.OnClickListener): RecyclerView.Adapter<MovieViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {

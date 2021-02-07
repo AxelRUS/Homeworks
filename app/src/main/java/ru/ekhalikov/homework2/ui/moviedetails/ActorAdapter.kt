@@ -1,8 +1,9 @@
-package ru.ekhalikov.homework2
+package ru.ekhalikov.homework2.ui.moviedetails
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import ru.ekhalikov.homework2.R
 
 class ActorAdapter: RecyclerView.Adapter<ActorViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ActorViewHolder {
