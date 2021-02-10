@@ -7,8 +7,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import ru.ekhalikov.homework2.R
+import ru.ekhalikov.homework2.model.Actor
 
 class ActorAdapter : RecyclerView.Adapter<ActorAdapter.ActorViewHolder>() {
+
+    private var actors = emptyList<Actor>()
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ActorViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val view = inflater.inflate(R.layout.view_holder_actor, parent, false)
@@ -16,18 +20,23 @@ class ActorAdapter : RecyclerView.Adapter<ActorAdapter.ActorViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ActorViewHolder, position: Int) {
-        holder.bind()
+        holder.bind(actors[position])
     }
 
     override fun getItemCount(): Int {
-        return 10;
+        return actors.size;
+    }
+
+    fun setData(actors: List<Actor>) {
+        this.actors = actors
+        notifyDataSetChanged()
     }
 
     class ActorViewHolder(item: View) : RecyclerView.ViewHolder(item) {
         val image = item.findViewById<ImageView>(R.id.image)
         val name = item.findViewById<TextView>(R.id.name)
 
-        fun bind() {
+        fun bind(actor: Actor) {
 
         }
     }

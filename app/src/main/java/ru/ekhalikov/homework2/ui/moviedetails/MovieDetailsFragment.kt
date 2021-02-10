@@ -6,11 +6,17 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.coroutines.launch
 import ru.ekhalikov.homework2.R
+import ru.ekhalikov.homework2.di.MovieRepositoryProvider
+import ru.ekhalikov.homework2.model.Movie
 
 class MovieDetailsFragment : Fragment() {
 
@@ -48,9 +54,38 @@ class MovieDetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val movieId = arguments?.getSerializable(PARAM_MOVIE_ID) as? Int ?: return
+
         val actorRecycler = view.findViewById<RecyclerView>(R.id.rvActors)
-        actorRecycler.adapter = ActorAdapter()
         actorRecycler.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        val actorAdapter = ActorAdapter()
+        actorRecycler.adapter = actorAdapter
+
+        lifecycleScope.launch {
+            val repository = (requireActivity() as MovieRepositoryProvider).provideMovieRepository()
+            val movie = repository.loadMovie(movieId)
+
+            if (movie != null) {
+                bindUI(view, movie)
+            } else {
+                showMovieNotFoundError()
+            }
+        }
+    }
+
+    fun loadDataToAdapter(adapter: ActorAdapter) {
+        val repository = (requireActivity() as MovieRepositoryProvider).provideMovieRepository()
+
+    }
+
+    fun bindUI(view: View, movie: Movie){
+
+    }
+
+    private fun showMovieNotFoundError() {
+        Toast.makeText(requireContext(), R.string.error_movie_not_found, Toast.LENGTH_LONG)
+                .show()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -69,7 +104,14 @@ class MovieDetailsFragment : Fragment() {
     }
 
     companion object {
-        fun newInstance() = MovieDetailsFragment()
+        private const val PARAM_MOVIE_ID = "movie_id"
+
+        fun newInstance(movieId: Int) = MovieDetailsFragment().also {
+            val args = bundleOf(
+                PARAM_MOVIE_ID to movieId
+            )
+            it.arguments = args
+        }
     }
 
     interface BackButtonListener {
