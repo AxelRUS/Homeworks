@@ -13,15 +13,17 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.coroutines.launch
 import ru.ekhalikov.homework2.R
 import ru.ekhalikov.homework2.di.MovieRepositoryProvider
+import ru.ekhalikov.homework2.model.Movie
 
 class MovieListFragment : Fragment() {
 
-    var onCardClick: OnCardClick? = null
+    private var listener: MovieListItemClickListener? = null
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        if (context is OnCardClick) {
-            onCardClick = context
+
+        if (context is MovieListItemClickListener) {
+            listener = context
         }
 
         if (context is AppCompatActivity) {
@@ -39,21 +41,25 @@ class MovieListFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        val cardView = view.findViewById(R.id.cvMovie) as CardView?
-//        cardView?.setOnClickListener { onCardClick?.onClick() }
-        val recycler = view.findViewById<RecyclerView>(R.id.recycler)
-        recycler.layoutManager = GridLayoutManager(activity, 2)
-        val adapter = MovieAdapter({ onCardClick?.onClick() })
-        recycler.adapter = adapter
-        loadDataToAdapter(adapter)
+
+        view.findViewById<RecyclerView>(R.id.recycler).apply {
+            this.layoutManager = GridLayoutManager(activity, 2)
+
+            val adapter = MovieListAdapter({ item ->
+                listener?.onMovieSelected(item)
+            })
+
+            this.adapter = adapter
+            loadDataToAdapter(adapter)
+        }
     }
 
     override fun onDetach() {
+        listener = null
         super.onDetach()
-        onCardClick = null
     }
 
-    fun loadDataToAdapter(adapter: MovieAdapter) {
+    fun loadDataToAdapter(adapter: MovieListAdapter) {
         val repository = (requireActivity() as MovieRepositoryProvider).provideMovieRepository()
         lifecycleScope.launch {
             val movies = repository.loadMovies()
@@ -65,7 +71,7 @@ class MovieListFragment : Fragment() {
         fun newInstance() = MovieListFragment()
     }
 
-    interface OnCardClick {
-        fun onClick()
+    interface MovieListItemClickListener {
+        fun onMovieSelected(movie: Movie)
     }
 }

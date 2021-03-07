@@ -20,7 +20,7 @@ import ru.ekhalikov.homework2.model.Movie
 
 class MovieDetailsFragment : Fragment() {
 
-    var backButtonListener: BackButtonListener? = null
+    var listener: MovieDetailsBackClickListener? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,8 +30,8 @@ class MovieDetailsFragment : Fragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
 
-        if (context is BackButtonListener) {
-            backButtonListener = context
+        if (context is MovieDetailsBackClickListener) {
+            listener = context
         }
 
         if (context is AppCompatActivity) {
@@ -59,7 +59,7 @@ class MovieDetailsFragment : Fragment() {
 
         val actorRecycler = view.findViewById<RecyclerView>(R.id.rvActors)
         actorRecycler.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        val actorAdapter = ActorAdapter()
+        val actorAdapter = ActorListAdapter()
         actorRecycler.adapter = actorAdapter
 
         lifecycleScope.launch {
@@ -74,7 +74,7 @@ class MovieDetailsFragment : Fragment() {
         }
     }
 
-    fun loadDataToAdapter(adapter: ActorAdapter) {
+    fun loadDataToAdapter(adapter: ActorListAdapter) {
         val repository = (requireActivity() as MovieRepositoryProvider).provideMovieRepository()
 
     }
@@ -91,7 +91,7 @@ class MovieDetailsFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> {
-                backButtonListener?.onBackButtonPressed()
+                listener?.onMovieDeselected()
                 return true
             }
             else -> return super.onOptionsItemSelected(item)
@@ -100,7 +100,7 @@ class MovieDetailsFragment : Fragment() {
 
     override fun onDetach() {
         super.onDetach()
-        backButtonListener = null
+        listener = null
     }
 
     companion object {
@@ -108,14 +108,14 @@ class MovieDetailsFragment : Fragment() {
 
         fun newInstance(movieId: Int) = MovieDetailsFragment().also {
             val args = bundleOf(
-                PARAM_MOVIE_ID to movieId
+                    PARAM_MOVIE_ID to movieId
             )
             it.arguments = args
         }
     }
 
-    interface BackButtonListener {
-        fun onBackButtonPressed()
+    interface MovieDetailsBackClickListener {
+        fun onMovieDeselected()
     }
 
 

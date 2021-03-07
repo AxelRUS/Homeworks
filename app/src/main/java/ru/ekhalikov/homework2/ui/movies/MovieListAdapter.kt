@@ -9,28 +9,28 @@ import androidx.recyclerview.widget.RecyclerView
 import ru.ekhalikov.homework2.R
 import ru.ekhalikov.homework2.model.Movie
 
-class MovieAdapter(var onClickListener: View.OnClickListener) : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
+class MovieListAdapter(private val onClickCard: (item: Movie) -> Unit) : RecyclerView.Adapter<MovieListAdapter.ViewHolder>() {
 
     private var movies: List<Movie> = emptyList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val view = inflater.inflate(R.layout.view_holder_movie, parent, false)
-        view.setOnClickListener(onClickListener)
         return ViewHolder(view)
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val item = movies[position]
+        holder.bind(item, onClickCard)
+    }
+
+    override fun getItemCount(): Int {
+        return movies.size;
     }
 
     fun setData(movies: List<Movie>) {
         this.movies = movies
         notifyDataSetChanged()
-    }
-
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(movies[position])
-    }
-
-    override fun getItemCount(): Int {
-        return movies.size;
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -39,9 +39,13 @@ class MovieAdapter(var onClickListener: View.OnClickListener) : RecyclerView.Ada
         var title: TextView = view.findViewById(R.id.tvMovieName)
         var length: TextView = view.findViewById(R.id.tvMovieLength)
 
-        fun bind(movie: Movie) {
+        fun bind(item: Movie, onClickCard: (item: Movie) -> Unit) {
 //        image.load()
-            title.text = movie.title
+            title.text = item.title
+
+            itemView.setOnClickListener {
+                onClickCard(item)
+            }
         }
     }
 }

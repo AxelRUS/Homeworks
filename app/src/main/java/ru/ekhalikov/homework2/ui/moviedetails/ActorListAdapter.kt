@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import ru.ekhalikov.homework2.R
 import ru.ekhalikov.homework2.model.Actor
 
-class ActorAdapter : RecyclerView.Adapter<ActorAdapter.ActorViewHolder>() {
+class ActorListAdapter : RecyclerView.Adapter<ActorListAdapter.ActorViewHolder>() {
 
     private var actors = emptyList<Actor>()
 
