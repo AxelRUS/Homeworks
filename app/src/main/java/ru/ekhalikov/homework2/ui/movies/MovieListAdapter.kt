@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import ru.ekhalikov.homework2.R
 import ru.ekhalikov.homework2.model.Movie
 
@@ -41,6 +42,12 @@ class MovieListAdapter(private val onClickCard: (item: Movie) -> Unit) : Recycle
 
         fun bind(item: Movie, onClickCard: (item: Movie) -> Unit) {
 //        image.load()
+            Glide
+                .with(itemView)
+                .load(item.imageUrl)
+                .into(image)
+
+//            GlideBuilder().setLogLevel(Log.VERBOSE).
             title.text = item.title
 
             itemView.setOnClickListener {
