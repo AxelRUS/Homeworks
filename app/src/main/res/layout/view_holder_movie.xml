@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cvMovie"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="14dp"
-    android:layout_marginTop="18dp"
-    android:layout_marginEnd="14dp"
-    app:cardCornerRadius="8dp"
-    android:foreground="?android:attr/selectableItemBackground"
+    android:layout_margin="6dp"
     android:clickable="true"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    app:cardCornerRadius="8dp"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent">
 
@@ -19,47 +17,69 @@
         android:id="@+id/clMovie"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/background">
+        android:background="@color/background"
+        app:layout_constrainedWidth="true">
 
         <ImageView
             android:id="@+id/ivCardBackground"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:adjustViewBounds="true"
-            android:scaleType="fitXY"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@id/brCardBottom"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/card_background" />
 
         <ImageView
             android:id="@+id/ivMovie"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             android:adjustViewBounds="true"
-            android:scaleType="fitStart"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintDimensionRatio="1:1.5"
             app:srcCompat="@drawable/movie" />
 
         <ImageView
             android:id="@+id/ivMovieMask"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:adjustViewBounds="true"
-            android:scaleType="fitStart"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/ivMovie"
+            app:layout_constraintEnd_toEndOf="@id/ivMovie"
+            app:layout_constraintStart_toStartOf="@id/ivMovie"
+            app:layout_constraintTop_toTopOf="@id/ivMovie"
             app:srcCompat="@drawable/mask" />
+
+        <TextView
+            android:id="@+id/tvPG"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_margin="8dp"
+            android:background="@drawable/bg_age"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@id/ivMovie"
+            app:layout_constraintTop_toTopOf="@id/ivMovie"
+            tools:text="13+" />
+
+        <ImageView
+            android:id="@+id/ivLike"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_margin="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_favorite" />
 
         <TextView
             android:id="@+id/tvMovieName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_margin="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:text="Avengers: End Game"
@@ -83,20 +103,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvMovieName" />
 
-        <Space
-            android:id="@+id/space"
-            android:layout_width="wrap_content"
-            android:layout_height="8dp"
-            app:layout_constraintEnd_toStartOf="@+id/ivCardBackground"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvMovieLength" />
-
-        <androidx.constraintlayout.widget.Barrier
-            android:id="@+id/brCardBottom"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:barrierDirection="end"
-            app:constraint_referenced_ids="space" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
