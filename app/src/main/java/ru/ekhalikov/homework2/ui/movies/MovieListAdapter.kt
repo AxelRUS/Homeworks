@@ -41,13 +41,11 @@ class MovieListAdapter(private val onClickCard: (item: Movie) -> Unit) : Recycle
         var length: TextView = view.findViewById(R.id.tvMovieLength)
 
         fun bind(item: Movie, onClickCard: (item: Movie) -> Unit) {
-//        image.load()
             Glide
-                .with(itemView)
+                .with(itemView.context.applicationContext)
                 .load(item.imageUrl)
                 .into(image)
 
-//            GlideBuilder().setLogLevel(Log.VERBOSE).
             title.text = item.title
 
             itemView.setOnClickListener {

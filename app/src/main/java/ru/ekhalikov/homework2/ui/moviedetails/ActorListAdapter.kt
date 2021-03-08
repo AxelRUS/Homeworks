@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import ru.ekhalikov.homework2.R
 import ru.ekhalikov.homework2.model.Actor
 
@@ -37,7 +38,11 @@ class ActorListAdapter : RecyclerView.Adapter<ActorListAdapter.ActorViewHolder>(
         val name = item.findViewById<TextView>(R.id.name)
 
         fun bind(actor: Actor) {
-
+            Glide
+                .with(image.context.applicationContext)
+                .load(actor.imageUrl)
+                .into(image)
+            name.text = actor.name
         }
     }
 }

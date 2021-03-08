@@ -25,13 +25,22 @@ class MainActivity : AppCompatActivity(),
         }
     }
 
+    override fun onBackPressed() {
+        if (supportFragmentManager.fragments.size > 1) {
+            routeBack()
+        } else {
+            finish()
+        }
+    }
+
     override fun onMovieSelected(movie: Movie) {
         routeToMovieDetails(movie)
     }
 
     override fun onMovieDeselected() {
-        routeToMoviesList()
+        routeBack()
     }
+
 
     private fun routeToMoviesList() {
         supportFragmentManager.beginTransaction()

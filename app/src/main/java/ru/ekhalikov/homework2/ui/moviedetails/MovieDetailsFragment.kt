@@ -81,11 +81,6 @@ class MovieDetailsFragment : Fragment() {
         }
     }
 
-//    fun loadDataToAdapter(adapter: ActorListAdapter) {
-//        val repository = (requireActivity() as MovieRepositoryProvider).provideMovieRepository()
-//
-//    }
-
 
     private fun showMovieNotFoundError() {
         Toast.makeText(requireContext(), R.string.error_movie_not_found, Toast.LENGTH_LONG)
@@ -119,7 +114,7 @@ class MovieDetailsFragment : Fragment() {
         val context = view?.context
         if (context != null && bgImage != null) {
             Glide
-                .with(context)
+                .with(context.applicationContext)
                 .load(movie.detailImageUrl)
                 .into(bgImage)
         }
