@@ -1,18 +1,24 @@
 package ru.ekhalikov.homework2.ui.moviedetails
 
 import android.content.Context
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
+import androidx.core.widget.ImageViewCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import kotlinx.coroutines.launch
 import ru.ekhalikov.homework2.R
 import ru.ekhalikov.homework2.di.MovieRepositoryProvider
@@ -57,10 +63,11 @@ class MovieDetailsFragment : Fragment() {
 
         val movieId = arguments?.getSerializable(PARAM_MOVIE_ID) as? Int ?: return
 
-        val actorRecycler = view.findViewById<RecyclerView>(R.id.rvActors)
-        actorRecycler.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        val actorAdapter = ActorListAdapter()
-        actorRecycler.adapter = actorAdapter
+        view.findViewById<RecyclerView>(R.id.rvActors).apply {
+            this.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+
+            this.adapter = ActorListAdapter()
+        }
 
         lifecycleScope.launch {
             val repository = (requireActivity() as MovieRepositoryProvider).provideMovieRepository()
@@ -74,18 +81,15 @@ class MovieDetailsFragment : Fragment() {
         }
     }
 
-    fun loadDataToAdapter(adapter: ActorListAdapter) {
-        val repository = (requireActivity() as MovieRepositoryProvider).provideMovieRepository()
+//    fun loadDataToAdapter(adapter: ActorListAdapter) {
+//        val repository = (requireActivity() as MovieRepositoryProvider).provideMovieRepository()
+//
+//    }
 
-    }
-
-    fun bindUI(view: View, movie: Movie){
-
-    }
 
     private fun showMovieNotFoundError() {
         Toast.makeText(requireContext(), R.string.error_movie_not_found, Toast.LENGTH_LONG)
-                .show()
+            .show()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -103,12 +107,59 @@ class MovieDetailsFragment : Fragment() {
         listener = null
     }
 
+    private fun bindUI(view: View, movie: Movie) {
+        updateMovieDetailsInfo(movie)
+
+        val adapter = view.findViewById<RecyclerView>(R.id.rvActors).adapter as ActorListAdapter
+        adapter.setData(movie.actors)
+    }
+
+    private fun updateMovieDetailsInfo(movie: Movie) {
+        val bgImage = view?.findViewById<ImageView>(R.id.ivBgImage)
+        val context = view?.context
+        if (context != null && bgImage != null) {
+            Glide
+                .with(context)
+                .load(movie.detailImageUrl)
+                .into(bgImage)
+        }
+
+        view?.findViewById<TextView>(R.id.tvPG)?.text =
+            context?.getString(R.string.movies_list_allowed_age_template, movie.pgAge)
+
+        view?.findViewById<TextView>(R.id.tvMovieName)?.text = movie.title
+        view?.findViewById<TextView>(R.id.tvGenre)?.text =
+            movie.genres.joinToString { it.name }
+        view?.findViewById<TextView>(R.id.tvReviewsCount)?.text =
+            context?.getString(R.string.movies_list_reviews_template, movie.reviewCount)
+        view?.findViewById<TextView>(R.id.tvStoryline)?.text = movie.storyLine
+
+        val starsImages = listOf<ImageView?>(
+            view?.findViewById(R.id.ivStarOne),
+            view?.findViewById(R.id.ivStarTwo),
+            view?.findViewById(R.id.ivStarThree),
+            view?.findViewById(R.id.ivStarFour),
+            view?.findViewById(R.id.ivStarFive)
+        )
+        starsImages.forEachIndexed { index, imageView ->
+            imageView?.let {
+                val colorId =
+                    if (movie.rating > index) R.color.pink_light else R.color.gray_dark
+                ImageViewCompat.setImageTintList(
+                    imageView, ColorStateList.valueOf(
+                        ContextCompat.getColor(imageView.context, colorId)
+                    )
+                )
+            }
+        }
+    }
+
     companion object {
         private const val PARAM_MOVIE_ID = "movie_id"
 
         fun newInstance(movieId: Int) = MovieDetailsFragment().also {
             val args = bundleOf(
-                    PARAM_MOVIE_ID to movieId
+                PARAM_MOVIE_ID to movieId
             )
             it.arguments = args
         }

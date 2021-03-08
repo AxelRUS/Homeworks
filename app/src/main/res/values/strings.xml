@@ -14,4 +14,7 @@
     <string name="movie_details">Movie Details</string>
     <string name="movies_list">Movies List</string>
     <string name="error_movie_not_found">Movie not found</string>
+
+    <string name="movies_list_allowed_age_template">%d+</string>
+    <string name="movies_list_reviews_template">%d REVIEWS</string>
 </resources>
