@@ -2,19 +2,13 @@ package ru.ekhalikov.homework2
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import ru.ekhalikov.homework2.data.JsonMovieRepository
-import ru.ekhalikov.homework2.data.MovieRepository
-import ru.ekhalikov.homework2.di.MovieRepositoryProvider
 import ru.ekhalikov.homework2.model.Movie
 import ru.ekhalikov.homework2.ui.moviedetails.MovieDetailsFragment
 import ru.ekhalikov.homework2.ui.movies.MovieListFragment
 
 class MainActivity : AppCompatActivity(),
-        MovieListFragment.MovieListItemClickListener,
-        MovieDetailsFragment.MovieDetailsBackClickListener,
-        MovieRepositoryProvider {
-
-    private val jsonMovieRepository = JsonMovieRepository(this)
+    MovieListFragment.MovieListItemClickListener,
+    MovieDetailsFragment.MovieDetailsBackClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,6 +59,4 @@ class MainActivity : AppCompatActivity(),
     private fun routeBack() {
         supportFragmentManager.popBackStack()
     }
-
-    override fun provideMovieRepository(): MovieRepository = jsonMovieRepository
 }

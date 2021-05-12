@@ -15,16 +15,20 @@ import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.core.widget.ImageViewCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import kotlinx.coroutines.launch
+import ru.ekhalikov.homework2.MovieRepositoryProvider
 import ru.ekhalikov.homework2.R
-import ru.ekhalikov.homework2.di.MovieRepositoryProvider
+import ru.ekhalikov.homework2.appComponent
 import ru.ekhalikov.homework2.model.Movie
 
 class MovieDetailsFragment : Fragment() {
+
+    private lateinit var viewModel: MovieDetailsViewModel
 
     var listener: MovieDetailsBackClickListener? = null
 
@@ -70,7 +74,8 @@ class MovieDetailsFragment : Fragment() {
         }
 
         lifecycleScope.launch {
-            val repository = (requireActivity() as MovieRepositoryProvider).provideMovieRepository()
+            val repository =
+                (context?.applicationContext as MovieRepositoryProvider).provideMovieRepository()
             val movie = repository.loadMovie(movieId)
 
             if (movie != null) {
@@ -79,6 +84,12 @@ class MovieDetailsFragment : Fragment() {
                 showMovieNotFoundError()
             }
         }
+    }
+
+    private fun setupViewModel() {
+        viewModel = ViewModelProvider(this, appComponent().viewModelFactory())
+            .get(MovieDetailsViewModel::class.java)
+        viewModel.movie.observe(this)
     }
 
 

@@ -7,17 +7,23 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.coroutines.launch
 import ru.ekhalikov.homework2.R
-import ru.ekhalikov.homework2.di.MovieRepositoryProvider
+import ru.ekhalikov.homework2.appComponent
 import ru.ekhalikov.homework2.model.Movie
 
 class MovieListFragment : Fragment() {
 
+    private lateinit var viewModel: MovieListViewModel
+
     private var listener: MovieListItemClickListener? = null
+    private val movieListAdapter = MovieListAdapter({ item ->
+        listener?.onMovieSelected(item)
+    })
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -44,13 +50,8 @@ class MovieListFragment : Fragment() {
 
         view.findViewById<RecyclerView>(R.id.recycler).apply {
             this.layoutManager = GridLayoutManager(activity, 2)
-
-            val adapter = MovieListAdapter({ item ->
-                listener?.onMovieSelected(item)
-            })
-
-            this.adapter = adapter
-            loadDataToAdapter(adapter)
+            this.adapter = this@MovieListFragment.movieListAdapter
+            setupViewModel()
         }
     }
 
@@ -59,11 +60,21 @@ class MovieListFragment : Fragment() {
         super.onDetach()
     }
 
-    fun loadDataToAdapter(adapter: MovieListAdapter) {
-        val repository = (requireActivity() as MovieRepositoryProvider).provideMovieRepository()
+    private fun setupViewModel() {
+        viewModel = ViewModelProvider(this, appComponent().viewModelFactory())
+            .get(MovieListViewModel::class.java)
+        viewModel.movies.observe(
+            this@MovieListFragment.viewLifecycleOwner,
+            this@MovieListFragment::updateAdapter
+        )
+        viewModel.onViewCreated()
+    }
+
+    private fun updateAdapter(movies: List<Movie>) {
+//        val repository = (requireActivity() as MovieRepositoryProvider).provideMovieRepository()
         lifecycleScope.launch {
-            val movies = repository.loadMovies()
-            adapter.setData(movies)
+//            val movies = repository.loadMovies()
+            movieListAdapter.setData(movies)
         }
     }
 
