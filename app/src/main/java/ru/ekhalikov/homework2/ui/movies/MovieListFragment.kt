@@ -56,6 +56,7 @@ class MovieListFragment : Fragment() {
     }
 
     override fun onDetach() {
+        // recycler = null, MAT & DDMS
         listener = null
         super.onDetach()
     }
