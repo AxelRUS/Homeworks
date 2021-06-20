@@ -10,7 +10,7 @@ class ViewModelFactory(private val repository: MovieRepository) : ViewModelProvi
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         return when (modelClass) {
             MovieListViewModel::class.java -> MovieListViewModel(repository)
-            MovieDetailsViewModel::class.java -> MovieListViewModel(repository)
+            MovieDetailsViewModel::class.java -> MovieDetailsViewModel(repository)
             else -> throw IllegalArgumentException("ViewModel of class:$modelClass is not supported")
         } as T
     }

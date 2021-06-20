@@ -21,13 +21,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import ru.ekhalikov.homework2.R
 import ru.ekhalikov.homework2.appComponent
+import ru.ekhalikov.homework2.model.Actor
 import ru.ekhalikov.homework2.model.Movie
 
 class MovieDetailsFragment : Fragment() {
 
     private lateinit var viewModel: MovieDetailsViewModel
+    private var movieId = -1
 
     var listener: MovieDetailsBackClickListener? = null
+    private var actorsRecycler: RecyclerView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,9 +65,10 @@ class MovieDetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val movieId = arguments?.getSerializable(PARAM_MOVIE_ID) as? Int ?: return
+        movieId = arguments?.getSerializable(PARAM_MOVIE_ID) as? Int ?: return
 
-        view.findViewById<RecyclerView>(R.id.rvActors).apply {
+        actorsRecycler = view.findViewById<RecyclerView>(R.id.rvActors)
+        actorsRecycler?.apply {
             this.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 
             this.adapter = ActorListAdapter()
@@ -88,9 +92,21 @@ class MovieDetailsFragment : Fragment() {
         viewModel = ViewModelProvider(this, appComponent().viewModelFactory())
             .get(MovieDetailsViewModel::class.java)
         viewModel.movie.observe(
-            this@MovieDetailsFragment.viewLifecycleOwner,
-            this@MovieDetailsFragment::updateMovieDetailsInfo
-        )
+            this@MovieDetailsFragment.viewLifecycleOwner
+        ) {
+            updateMovieDetailsInfo(it)
+            updateActors(it.actors)
+        }
+
+        if (movieId > 0) {
+            viewModel.onViewCreated(movieId)
+        }
+    }
+
+    private fun updateActors(actors: List<Actor>) {
+        if (actors.isNotEmpty()) {
+            (actorsRecycler?.adapter as? ActorListAdapter)?.setData(actors)
+        }
     }
 
 
@@ -114,12 +130,12 @@ class MovieDetailsFragment : Fragment() {
         listener = null
     }
 
-    private fun bindUI(view: View, movie: Movie) {
-        updateMovieDetailsInfo(movie)
-
-        val adapter = view.findViewById<RecyclerView>(R.id.rvActors).adapter as ActorListAdapter
-        adapter.setData(movie.actors)
-    }
+//    private fun bindUI(view: View, movie: Movie) {
+//        updateMovieDetailsInfo(movie)
+//
+//        val adapter = view.findViewById<RecyclerView>(R.id.rvActors).adapter as ActorListAdapter
+//        adapter.setData(movie.actors)
+//    }
 
     private fun updateMovieDetailsInfo(movie: Movie) {
         val bgImage = view?.findViewById<ImageView>(R.id.ivBgImage)
