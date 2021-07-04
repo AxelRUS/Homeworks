@@ -41,6 +41,7 @@ android {
         prod {
             dimension 'serverType'
             buildConfigField "String", "BASE_URL", "\"https://api.themoviedb.org/3/\""
+            buildConfigField "String", "API_KEY", "\"4bdfb6bda83843415f21f121c8bc6333\""
         }
     }
 
