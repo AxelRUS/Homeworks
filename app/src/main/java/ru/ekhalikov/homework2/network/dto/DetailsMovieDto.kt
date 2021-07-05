@@ -4,9 +4,12 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class ListMovieDto(
+data class DetailsMovieDto (
     @SerialName("id")
     val id: Int = 0,
+
+    @SerialName("imdb_id")
+    val imdbId: String = "",
 
     @SerialName("title")
     val title: String = "",
@@ -24,16 +27,28 @@ data class ListMovieDto(
     val reviewsCounter: Int = 0,
 
     @SerialName("popularity")
-    val popylarity: Float = 0.0f,
+    val popularity: Float = 0.0f,
 
     @SerialName("release_date")
     val releaseDate: String = "",
 
-    @SerialName("genre_ids")
-    val genres: List<Int> = emptyList(),
+    @SerialName("runtime")
+    val duration: Int = 0,
 
-    @SerialName("poster_path")
-    val posterList: String = "",
+    @SerialName("budget")
+    val budget: Int = 0,
+
+    @SerialName("revenue")
+    val revenue: Int = 0,
+
+    @SerialName("status")
+    val status: String = "Released",
+
+    @SerialName("genres")
+    val genres: List<GenreDto> = emptyList(),
+
+    @SerialName("homepage")
+    val homepage: String = "",
 
     @SerialName("backdrop_path")
     val posterDetails: String = "",
