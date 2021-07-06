@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import ru.ekhalikov.homework2.data.MovieRepository
-import ru.ekhalikov.homework2.model.Movie
+import ru.ekhalikov.homework2.models.Movie
 
 class MovieDetailsViewModel(private val repository: MovieRepository) : ViewModel() {
 

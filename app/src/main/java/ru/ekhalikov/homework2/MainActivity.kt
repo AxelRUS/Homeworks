@@ -2,7 +2,7 @@ package ru.ekhalikov.homework2
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import ru.ekhalikov.homework2.model.Movie
+import ru.ekhalikov.homework2.models.Movie
 import ru.ekhalikov.homework2.ui.moviedetails.MovieDetailsFragment
 import ru.ekhalikov.homework2.ui.movies.MovieListFragment
 

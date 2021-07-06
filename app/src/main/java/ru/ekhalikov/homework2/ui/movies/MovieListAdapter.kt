@@ -11,7 +11,7 @@ import androidx.core.widget.ImageViewCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import ru.ekhalikov.homework2.R
-import ru.ekhalikov.homework2.model.Movie
+import ru.ekhalikov.homework2.models.Movie
 
 class MovieListAdapter(private val onClickCard: (item: Movie) -> Unit) : RecyclerView.Adapter<MovieListAdapter.ViewHolder>() {
 
