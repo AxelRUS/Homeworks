@@ -5,9 +5,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
-import ru.ekhalikov.homework2.models.Actor
-import ru.ekhalikov.homework2.models.Genre
-import ru.ekhalikov.homework2.models.Movie
+import ru.ekhalikov.homework2.domain.movies.models.Actor
+import ru.ekhalikov.homework2.domain.movies.models.Genre
+import ru.ekhalikov.homework2.domain.movies.models.Movie
 
 interface MovieRepository {
     suspend fun loadMovies(): List<Movie>

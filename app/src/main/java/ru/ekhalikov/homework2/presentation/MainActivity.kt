@@ -3,7 +3,7 @@ package ru.ekhalikov.homework2.presentation
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import ru.ekhalikov.homework2.R
-import ru.ekhalikov.homework2.models.Movie
+import ru.ekhalikov.homework2.domain.movies.models.Movie
 import ru.ekhalikov.homework2.presentation.moviedetails.MovieDetailsFragment
 import ru.ekhalikov.homework2.presentation.movies.MovieListFragment
 

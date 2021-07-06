@@ -21,8 +21,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import ru.ekhalikov.homework2.R
 import ru.ekhalikov.homework2.appComponent
-import ru.ekhalikov.homework2.models.Actor
-import ru.ekhalikov.homework2.models.Movie
+import ru.ekhalikov.homework2.domain.movies.models.Actor
+import ru.ekhalikov.homework2.domain.movies.models.Movie
 
 class MovieDetailsFragment : Fragment() {
 

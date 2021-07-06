@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import ru.ekhalikov.homework2.R
-import ru.ekhalikov.homework2.models.Actor
+import ru.ekhalikov.homework2.domain.movies.models.Actor
 
 class ActorListAdapter : RecyclerView.Adapter<ActorListAdapter.ActorViewHolder>() {
 

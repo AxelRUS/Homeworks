@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.coroutines.launch
 import ru.ekhalikov.homework2.R
 import ru.ekhalikov.homework2.appComponent
-import ru.ekhalikov.homework2.models.Movie
+import ru.ekhalikov.homework2.domain.movies.models.Movie
 
 class MovieListFragment : Fragment() {
 

@@ -1,4 +1,4 @@
-package ru.ekhalikov.homework2.models
+package ru.ekhalikov.homework2.domain.movies.models
 
 data class Movie(
         val id: Int,
