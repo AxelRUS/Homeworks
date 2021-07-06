@@ -1,4 +1,4 @@
-package ru.ekhalikov.homework2.network
+package ru.ekhalikov.homework2.data.network
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.json.Json
@@ -7,7 +7,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import ru.ekhalikov.homework2.BuildConfig
-import ru.ekhalikov.homework2.network.apis.MoviesApi
+import ru.ekhalikov.homework2.data.network.apis.MoviesApi
 
 class MoviesNetworkModule(baseUrl: String) : MoviesNetworkClient {
 

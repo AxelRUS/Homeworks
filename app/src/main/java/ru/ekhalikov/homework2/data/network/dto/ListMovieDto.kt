@@ -1,15 +1,12 @@
-package ru.ekhalikov.homework2.network.dto
+package ru.ekhalikov.homework2.data.network.dto
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class DetailsMovieDto (
+data class ListMovieDto(
     @SerialName("id")
     val id: Int = 0,
-
-    @SerialName("imdb_id")
-    val imdbId: String = "",
 
     @SerialName("title")
     val title: String = "",
@@ -27,28 +24,16 @@ data class DetailsMovieDto (
     val reviewsCounter: Int = 0,
 
     @SerialName("popularity")
-    val popularity: Float = 0.0f,
+    val popylarity: Float = 0.0f,
 
     @SerialName("release_date")
     val releaseDate: String = "",
 
-    @SerialName("runtime")
-    val duration: Int = 0,
+    @SerialName("genre_ids")
+    val genres: List<Int> = emptyList(),
 
-    @SerialName("budget")
-    val budget: Int = 0,
-
-    @SerialName("revenue")
-    val revenue: Int = 0,
-
-    @SerialName("status")
-    val status: String = "Released",
-
-    @SerialName("genres")
-    val genres: List<GenreDto> = emptyList(),
-
-    @SerialName("homepage")
-    val homepage: String = "",
+    @SerialName("poster_path")
+    val posterList: String = "",
 
     @SerialName("backdrop_path")
     val posterDetails: String = "",

@@ -1,4 +1,4 @@
-package ru.ekhalikov.homework2.network.dto
+package ru.ekhalikov.homework2.data.network.dto
 
 import kotlinx.serialization.SerialName
 

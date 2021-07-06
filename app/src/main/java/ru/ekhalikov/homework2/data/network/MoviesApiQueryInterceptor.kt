@@ -1,4 +1,4 @@
-package ru.ekhalikov.homework2.network
+package ru.ekhalikov.homework2.data.network
 
 import okhttp3.Interceptor
 import okhttp3.Response
