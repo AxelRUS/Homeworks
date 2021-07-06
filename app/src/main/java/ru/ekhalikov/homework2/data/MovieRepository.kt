@@ -5,6 +5,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
+import ru.ekhalikov.homework2.data.storage.entities.JsonActor
+import ru.ekhalikov.homework2.data.storage.entities.JsonGenre
+import ru.ekhalikov.homework2.data.storage.entities.JsonMovie
 import ru.ekhalikov.homework2.domain.movies.models.Actor
 import ru.ekhalikov.homework2.domain.movies.models.Genre
 import ru.ekhalikov.homework2.domain.movies.models.Movie
