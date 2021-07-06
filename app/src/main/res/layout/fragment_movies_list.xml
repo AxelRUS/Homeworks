@@ -8,6 +8,6 @@
     android:paddingTop="?android:attr/actionBarSize"
     tools:itemCount="4"
     tools:listitem="@layout/view_holder_movie"
-    tools:context=".ui.movies.MovieListFragment">
+    tools:context=".presentation.movies.MovieListFragment">
 
 </androidx.recyclerview.widget.RecyclerView>
